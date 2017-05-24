@@ -16,7 +16,7 @@
 
         // The initialize function must be run each time a new page is loaded
         Office.initialize = function (reason) {
-
+          return;
         };
 
         // Add any ui-less function here
@@ -24,7 +24,11 @@
       })();
 
       function goToDooly(event) {
-        System.Diagnostics.Process.Start("https://start.dooly.ai");
+        if (Office.context.mailbox.diagnostics.hostName === 'OutlookWebApp') {
+          window.open(window.location.origin);
+        } else {
+          Office.context.ui.displayDialogAsync("https://plumber-violet-32245.bitballoon.com/");
+        }
         event.completed();
       }
     </script>
