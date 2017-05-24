@@ -112,7 +112,7 @@
         <bt:Image id="icon80" DefaultValue="https://mir-s3-cdn-cf.behance.net/project_modules/disp/aec30745969487.5607bad7b4712.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="functionFile" DefaultValue="file:///C:/Users/JackyHo/Desktop/dooly_outlook.html"/>
+        <bt:Url id="functionFile" DefaultValue="http://plumber-violet-32245.bitballoon.com/" />
         <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://start.dooly.ai"/>
       </bt:Urls>
       <bt:ShortStrings>
