@@ -12,10 +12,13 @@
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script>
 
     <script>
+      var item;
+
       (function () {
 
         // The initialize function must be run each time a new page is loaded
         Office.initialize = function (reason) {
+          item = Office.context.mailbox.item;
           return;
         };
 
@@ -23,13 +26,35 @@
 
       })();
 
-      function goToDooly(event) {
+      function openDooly() {
+        var url = "https://plumber-violet-32245.bitballoon.com/?stuff=" +
+          window.encodeURIComponent('words hurt');
+
         if (Office.context.mailbox.diagnostics.hostName === 'OutlookWebApp') {
-          window.open(window.location.origin);
+          window.open(url);
         } else {
-          Office.context.ui.displayDialogAsync("https://plumber-violet-32245.bitballoon.com/");
+          Office.context.ui.displayDialogAsync(url);
         }
-        event.completed();
+      }
+
+      function getSubject(callback) {
+        item.subject.getAsync(function (result) {
+          if (result.status == Office.AsyncResultStatus.Failed){
+            callback();
+          } else {
+            // Successfully got the subject, display it.
+            callback();
+          }
+        });
+      }
+
+      function goToDooly(event) {
+        getSubject(function() {
+          openDooly();
+          event.completed();
+        });
+
+        return;
       }
     </script>
 </head>
